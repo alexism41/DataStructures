@@ -19,7 +19,6 @@ class SinglyLinkedListTest {
     @Test
     @DisplayName("Should return size of the list")
     void size() {
-        construct();
         assertEquals(0, list.size());
         list.insert(1);
         assertEquals(1, list.size());
@@ -42,7 +41,6 @@ class SinglyLinkedListTest {
     @Test
     @DisplayName("Should return data from the last node in the list")
     void getTail() {
-        construct();
         assertThrows(IndexOutOfBoundsException.class, () -> list.getTail());
         list.insert(30);
         assertEquals(30, list.getTail());
@@ -63,7 +61,6 @@ class SinglyLinkedListTest {
     @Test
     @DisplayName("Should remove data from list")
     void remove() {
-        construct();
         assertThrows(IndexOutOfBoundsException.class, () -> list.remove());
         list.insert(1);
         list.insert(2);
