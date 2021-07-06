@@ -31,11 +31,33 @@ class SinglyLinkedListTest {
     }
 
     @Test
+    @DisplayName("Should be return true when empty")
     void isEmpty() {
+        assertTrue(list.isEmpty());
+        list.insert(1);
+        assertFalse(list.isEmpty());
+        list.insert(2);
+        assertFalse(list.isEmpty());
+        list.remove();
+        assertFalse(list.isEmpty());
+        list.remove();
+        assertTrue(list.isEmpty());
     }
 
     @Test
+    @DisplayName("Should get the front of the list")
     void getHead() {
+        assertThrows(IndexOutOfBoundsException.class, () -> list.getHead());
+        list.insert(0,1);
+        assertEquals(1, list.getHead());
+        list.insert(2);
+        list.insert(3);
+        assertEquals(1, list.getHead());
+        list.remove(0);
+        assertEquals(2, list.getHead());
+        list.remove(0);
+        list.remove(0);
+        assertThrows(IndexOutOfBoundsException.class, () -> list.getHead());
     }
 
     @Test
@@ -52,10 +74,38 @@ class SinglyLinkedListTest {
 
     @Test
     void getAt() {
+        assertThrows(IndexOutOfBoundsException.class, () -> list.getAt(0));
+        list.insert(0, 1);
+        list.insert(1, 2);
+        list.insert(2, 3);
+        list.insert(3, 4);
+        assertThrows(IndexOutOfBoundsException.class, () -> list.getAt(-1));
+        assertThrows(IndexOutOfBoundsException.class, () -> list.getAt(4));
+        assertEquals(2, list.getAt(1));
+        assertEquals(3, list.remove(2));
+        assertEquals(4, list.getAt(2));
     }
 
     @Test
+    @DisplayName("Should insert data to list")
     void insert() {
+        list.insert(0,1);
+        list.insert(2);
+        list.insert(3);
+        assertThrows(IndexOutOfBoundsException.class, () -> list.insert(-1, 4));
+        assertEquals(3, list.size());
+        list.insert(4);
+        list.insert(5);
+        assertThrows(NullPointerException.class, () -> list.insert(3, null));
+        assertEquals(5, list.size());
+        list.insert(5,6);
+        assertThrows(IndexOutOfBoundsException.class, () -> list.insert(7, 6));
+        list.insert(5,7);
+        assertEquals(7, list.size());
+        assertEquals(6, list.remove());
+        assertEquals(6, list.size());
+        assertEquals(7, list.remove());
+        assertEquals(5,list.size());
     }
 
     @Test
