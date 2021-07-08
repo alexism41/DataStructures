@@ -31,7 +31,7 @@ class SinglyLinkedListTest {
     }
 
     @Test
-    @DisplayName("Should be return true when empty")
+    @DisplayName("Should return true when empty")
     void isEmpty() {
         assertTrue(list.isEmpty());
         list.insert(1);
@@ -45,9 +45,9 @@ class SinglyLinkedListTest {
     }
 
     @Test
-    @DisplayName("Should get the front of the list")
+    @DisplayName("Should return data from the front of the list")
     void getHead() {
-        assertThrows(IndexOutOfBoundsException.class, () -> list.getHead());
+        assertThrows(NullPointerException.class, () -> list.getHead());
         list.insert(0,1);
         assertEquals(1, list.getHead());
         list.insert(2);
@@ -57,13 +57,13 @@ class SinglyLinkedListTest {
         assertEquals(2, list.getHead());
         list.remove(0);
         list.remove(0);
-        assertThrows(IndexOutOfBoundsException.class, () -> list.getHead());
+        assertThrows(NullPointerException.class, () -> list.getHead());
     }
 
     @Test
     @DisplayName("Should return data from the last node in the list")
     void getTail() {
-        assertThrows(IndexOutOfBoundsException.class, () -> list.getTail());
+        assertThrows(NullPointerException.class, () -> list.getTail());
         list.insert(30);
         assertEquals(30, list.getTail());
         list.insert(1);
@@ -73,6 +73,7 @@ class SinglyLinkedListTest {
     }
 
     @Test
+    @DisplayName("Should return data at given index")
     void getAt() {
         assertThrows(IndexOutOfBoundsException.class, () -> list.getAt(0));
         list.insert(0, 1);

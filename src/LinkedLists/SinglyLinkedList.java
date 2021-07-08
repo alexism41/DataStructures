@@ -86,20 +86,22 @@ public class SinglyLinkedList<T> {
      * Gets data from the node at the front of the list
      *
      * @return the data from the first node in the list
-     * @throws IndexOutOfBoundsException if {@code index < 0 || index > size()}
+     * @throws NullPointerException if {@code size() < 1}
      */
     public T getHead() {
-        return getNode(0).data;
+        if(size() < 1) throw new NullPointerException();
+        return head.data;
     }
 
     /**
      * Gets data from the node at the end of the list
      *
      * @return the data from the last node in the list
-     * @throws IndexOutOfBoundsException if {@code index < 0 || index > size()}
+     * @throws NullPointerException if {@code size() < 1}
      */
     public T getTail() {
-        return getNode(size()-1).data;
+        if(size() < 1) throw new NullPointerException();
+        return tail.data;
     }
 
     /**
