@@ -49,4 +49,96 @@ public class DoublyLinkedList<T> {
     private Node<T> tail;
     /** Size of the list **/
     private int size;
+    /** Helper function to access nodes in list **/
+    private Node<T> getNode(int index) {
+        if(index < size) {
+            // start traversal from the front if index is in the first half or middle
+            int count = 0;
+            if(index <= size/2){
+                Node<T> cur = head;
+                for(int i = 0; i <= index ; ++i)
+                {
+                    if(i == index)
+                        return cur;
+                    cur = cur.next;
+                    count++;
+                    System.out.println(count);
+                }
+            }
+            else
+            {
+                // start traversal from the end if index is in the second half
+                Node<T> cur = tail;
+                for(int i = size-1; index <= i; --i)
+                {
+                    if(i == index)
+                        return cur;
+                    cur = cur.prev;
+                    count++;
+                    System.out.println(count);
+                }
+            }
+        }
+        throw new IndexOutOfBoundsException();
+    }
+
+    /** Constructs an empty linked list **/
+    public DoublyLinkedList() {
+        this.head = null;
+        this.tail = null;
+        this.size = 0;
+    }
+
+    /**
+     * Gets the size of the linked list
+     *
+     * @return the number of nodes in the list
+     */
+    public int size() {
+        return size;
+    }
+
+    /**
+     * Checks whether the list is empty or not
+     *
+     * @return {@code true} if the list is empty
+     */
+    public boolean isEmpty() {
+        return head == null;
+    }
+
+    /**
+     * Gets data from the node at the front of the list
+     *
+     * @return the data from the first node in the list
+     * @throws NullPointerException if {@code size() < 1}
+     */
+    public T getHead() {
+        if(size() < 1) throw new NullPointerException();
+        return head.data;
+    }
+
+    /**
+     * Gets data from the node at the end of the list
+     *
+     * @return the data from the last node in the list
+     * @throws NullPointerException if {@code size() < 1}
+     */
+    public T getTail() {
+        if(size() < 1) throw new NullPointerException();
+        return tail.data;
+    }
+
+    /**
+     * Gets data from the node at a specific position in the list
+     *
+     * @param index the index of the node in the list
+     * @return the data from the node at specified index
+     * @throws IndexOutOfBoundsException if {@code index < 0 || index > size()}
+     */
+    public T getAt(int index) {
+        return getNode(index).data;
+    }
+
+
 }
