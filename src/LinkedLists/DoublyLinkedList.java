@@ -140,5 +140,44 @@ public class DoublyLinkedList<T> {
         return getNode(index).data;
     }
 
+    /**
+     * Inserts data into a specific position in the list
+     *
+     * @param index the index at which data is to be inserted at
+     * @param data the data to be inserted into the list
+     * @throws NullPointerException if data is null
+     * @throws IndexOutOfBoundsException if {@code index < 0 || index > size()}
+     */
+    public void insert(int index, T data) {
+        if(data == null) throw new NullPointerException();
+        if(index == 0) {
+            head = new Node<>(data,null, head);
+            if(tail == null)
+                tail = head;
+        }
+        else if(index == size())
+        {
+            tail.next = new Node<>(data, tail, null);
+            tail = tail.next;
+        }
+        else{
+            Node<T> cur = getNode(index);
+            Node<T> prev = cur.prev;
+            prev.next = new Node<>(data, prev, cur);
+            cur.prev = prev.next;
+        }
+        size++;
+    }
+
+    /**
+     * Inserts data to the end of the list
+     *
+     * @param data the data to be inserted into the list
+     * @throws NullPointerException if data is null
+     * @throws IndexOutOfBoundsException if {@code index < 0 || index > size()}
+     */
+    public void insert(T data) {
+        insert(size(), data);
+    }
 
 }
