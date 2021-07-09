@@ -1,12 +1,10 @@
 package Stack;
 
-import LinkedLists.DoublyLinkedList;
-
 /**
  * Implementation of a Stack (LIFO)
  *
  * @author Alexis Muro
- * @param <T> type of element in the linked list.
+ * @param <T> type of element in the stack.
  */
 public class Stack<T> {
     /** Implementation of the nodes in the stack **/
