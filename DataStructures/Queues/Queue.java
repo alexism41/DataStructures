@@ -68,4 +68,33 @@ public class Queue<T> {
         this.capacity = capacity;
         this.size = 0;
     }
+
+    /**
+     * Gets the size of the queue
+     *
+     * @return the number of nodes in the queue
+     */
+    public int size() {
+        return size;
+    }
+
+    /**
+     * Checks whether the queue is empty or not
+     *
+     * @return {@code true} if the queue is empty
+     */
+    public boolean isEmpty() {
+        return front == null;
+    }
+
+    /**
+     * Checks whether the queue is full
+     *
+     * @return {@code true} if {@code size == capacity}
+     */
+    public boolean isFull() {
+        return size == capacity;
+    }
+
+
 }
