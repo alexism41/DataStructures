@@ -1,7 +1,5 @@
 package Queues;
 
-import Stacks.Stack;
-
 /**
  * Implementation of a Queue (FIFO)
  *
@@ -48,4 +46,26 @@ public class Queue<T> {
     private int capacity;
     /** Size of the queue **/
     private int size;
+
+    /** Constructs an empty Queue **/
+    public Queue() {
+        this.front = null;
+        this.back = null;
+        this.capacity = Integer.MAX_VALUE;
+        this.size = 0;
+    }
+
+    /**
+     * Constructs an empty queue with a specific capacity
+     *
+     * @param capacity the max capacity for the stack
+     * @throws IllegalArgumentException if capacity is not at least 1
+     */
+    public Queue(int capacity){
+        if(capacity < 1) throw new IllegalArgumentException();
+        this.front = null;
+        this.back = null;
+        this.capacity = capacity;
+        this.size = 0;
+    }
 }
