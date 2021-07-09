@@ -54,8 +54,14 @@ public class Stack<T> {
         this.size = 0;
     }
 
-    /** Constructs an empty linked list with a specific capacity **/
+    /**
+     * Constructs an empty linked list with a specific capacity
+     *
+     * @param capacity the max capacity for the stack
+     * @throws IllegalArgumentException if capacity is not at least 1
+     */
     public Stack(int capacity){
+        if(capacity < 1) throw new IllegalArgumentException();
         this.top = null;
         this.capacity = capacity;
         this.size = 0;
