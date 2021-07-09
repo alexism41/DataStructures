@@ -1,5 +1,7 @@
 package Queues;
 
+import java.util.NoSuchElementException;
+
 /**
  * Implementation of a Queue (FIFO)
  *
@@ -96,5 +98,88 @@ public class Queue<T> {
         return size == capacity;
     }
 
+    /**
+     * Gets the data at the front of the queue
+     *
+     * @return the data at the front of the queue or null if empty
+     */
+    public T peek() {
+        if(isEmpty())
+            return null;
+        return front.data;
+    }
 
+    /**
+     * Gets the data at the front of the queue
+     *
+     * @return the data at the front of the queue
+     * @throws NoSuchElementException if queue is empty
+     */
+    public T element() {
+        T data = peek();
+        if(data == null) throw new NoSuchElementException();
+        return data;
+    }
+
+    /**
+     * Gets and removes the data at the front of the queue
+     *
+     * @return the data at the front of the queue or null if empty
+     */
+    public T poll() {
+        if(isEmpty())
+            return null;
+        T data = front.data;
+        front = front.next;
+        size--;
+        return data;
+    }
+
+    /**
+     * Gets and removes the data at the front of the queue
+     *
+     * @return the data at the front of the queue
+     * @throws NoSuchElementException if queue is empty
+     */
+    public T remove() {
+        T data = poll();
+        if(data == null) throw new NoSuchElementException();
+        return data;
+    }
+
+    /**
+     * Inserts data into the queue
+     *
+     * @return {@code true} if the data was successfully inserted into the queue
+     *         {@code false} if queue is at capacity
+     * @throws NullPointerException if data is null
+     */
+    public boolean offer(T data) {
+        if(data == null) throw new NullPointerException();
+        if(isFull()) return false;
+        if(front == null)
+        {
+            front = new Node<>(data);
+            back = front;
+        }
+        else
+        {
+            back.next = new Node<>(data);
+            back = back.next;
+        }
+        size++;
+        return true;
+    }
+
+    /**
+     * Inserts data into the queue
+     *
+     * @return {@code true} if the data was successfully inserted into the queue
+     * @throws NullPointerException if data is null
+     * @throws IllegalStateException if there is no space available
+     */
+    public boolean add(T data) {
+        if(!offer(data)) throw new IllegalStateException();
+        return true;
+    }
 }
