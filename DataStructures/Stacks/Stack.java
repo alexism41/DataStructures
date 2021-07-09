@@ -45,7 +45,7 @@ public class Stack<T> {
     /** Size of the list **/
     private int size;
 
-    /** Constructs an empty linked list **/
+    /** Constructs an empty stack **/
     public Stack() {
         this.top = null;
         this.capacity = Integer.MAX_VALUE;
