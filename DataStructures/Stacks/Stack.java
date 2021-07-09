@@ -1,4 +1,4 @@
-package Stack;
+package Stacks;
 
 /**
  * Implementation of a Stack (LIFO)
