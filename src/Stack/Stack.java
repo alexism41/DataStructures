@@ -47,5 +47,46 @@ public class Stack<T> {
     /** Size of the list **/
     private int size;
 
+    /** Constructs an empty linked list **/
+    public Stack() {
+        this.top = null;
+        this.capacity = Integer.MAX_VALUE;
+        this.size = 0;
+    }
+
+    /** Constructs an empty linked list with a specific capacity **/
+    public Stack(int capacity){
+        this.top = null;
+        this.capacity = capacity;
+        this.size = 0;
+    }
+
+    /**
+     * Gets the size of the stack
+     *
+     * @return the number of nodes in the stack
+     */
+    public int size() {
+        return size;
+    }
+
+    /**
+     * Checks whether the stack is empty or not
+     *
+     * @return {@code true} if the list is empty
+     */
+    public boolean isEmpty() {
+        return top == null;
+    }
+
+    /**
+     * Checks whether the stack is full
+     *
+     * @return {@code true} if {@code size == capacity}
+     */
+    public boolean isFull() {
+        return size == capacity;
+    }
+
 
 }
