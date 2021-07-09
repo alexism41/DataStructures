@@ -53,7 +53,7 @@ public class Stack<T> {
     }
 
     /**
-     * Constructs an empty linked list with a specific capacity
+     * Constructs an empty stack with a specific capacity
      *
      * @param capacity the max capacity for the stack
      * @throws IllegalArgumentException if capacity is not at least 1
