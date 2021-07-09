@@ -82,6 +82,7 @@ class SinglyLinkedListTest {
         list.insert(3, 4);
         assertThrows(IndexOutOfBoundsException.class, () -> list.getAt(-1));
         assertThrows(IndexOutOfBoundsException.class, () -> list.getAt(4));
+        assertThrows(IndexOutOfBoundsException.class, () -> list.getAt(list.size()));
         assertEquals(2, list.getAt(1));
         assertEquals(3, list.remove(2));
         assertEquals(4, list.getAt(2));
@@ -122,6 +123,7 @@ class SinglyLinkedListTest {
         assertEquals( 6, list.remove());
         assertEquals( 2, list.remove(1));
         assertThrows(IndexOutOfBoundsException.class, () -> list.remove(8));
+        assertThrows(IndexOutOfBoundsException.class, () -> list.remove(list.size()));
         assertEquals( 5, list.remove());
         assertEquals( 4, list.remove());
         assertEquals( 3, list.remove());

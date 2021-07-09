@@ -109,7 +109,7 @@ public class SinglyLinkedList<T> {
      *
      * @param index the index of the node in the list
      * @return the data from the node at specified index
-     * @throws IndexOutOfBoundsException if {@code index < 0 || index > size()}
+     * @throws IndexOutOfBoundsException if {@code index < 0 || index >= size()}
      */
     public T getAt(int index) {
         return getNode(index).data;
@@ -158,10 +158,10 @@ public class SinglyLinkedList<T> {
      *
      * @param index the index at which data is to be removed from
      * @return the data that was removed from the list
-     * @throws IndexOutOfBoundsException if {@code index < 0 || index > size()}
+     * @throws IndexOutOfBoundsException if {@code index < 0 || index >= size()}
      */
     public T remove(int index) {
-        if(index < 0 || index > size()) throw new IndexOutOfBoundsException();
+        if(index < 0 || index >= size()) throw new IndexOutOfBoundsException();
         T removed;
         if(index == 0) {
             removed = head.data;
@@ -191,7 +191,7 @@ public class SinglyLinkedList<T> {
      * Removes data from the end of the list
      *
      * @return the data that was removed from the list
-     * @throws IndexOutOfBoundsException if {@code index < 0 || index > size()}
+     * @throws IndexOutOfBoundsException if {@code index < 0 || index >= size()}
      */
     public T remove() {
         return remove(size()-1);
