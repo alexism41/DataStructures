@@ -88,5 +88,43 @@ public class Stack<T> {
         return size == capacity;
     }
 
+    /**
+     * Gets the data at the top of the stack
+     *
+     * @return the data at the top of the stack or null if empty
+     */
+    public T top() {
+        if(isEmpty())
+            return null;
+        return top.data;
+    }
 
+    /**
+     * Pushes data onto the stack
+     *
+     * @return {@code true} if the data was successfully pushed onto the stack
+     *         {@code false} if stack is at capacity
+     * @throws NullPointerException if data is null
+     */
+    public boolean push(T data) {
+        if(data == null) throw new NullPointerException();
+        if(isFull()) return false;
+        top = new Node<>(data, top);
+        size++;
+        return true;
+    }
+
+    /**
+     * Removes the data from the top of the stack
+     *
+     * @return the data that was removed from the stack or null if empty
+     */
+    public T pop() {
+        if(isEmpty())
+            return null;
+        T data = top.data;
+        top = top.next;
+        size--;
+        return data;
+    }
 }
