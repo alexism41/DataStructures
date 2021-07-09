@@ -53,7 +53,6 @@ public class DoublyLinkedList<T> {
     private Node<T> getNode(int index) {
         if(index < size) {
             // start traversal from the front if index is in the first half or middle
-            int count = 0;
             if(index <= size/2){
                 Node<T> cur = head;
                 for(int i = 0; i <= index ; ++i)
@@ -61,8 +60,6 @@ public class DoublyLinkedList<T> {
                     if(i == index)
                         return cur;
                     cur = cur.next;
-                    count++;
-                    System.out.println(count);
                 }
             }
             else
@@ -74,8 +71,6 @@ public class DoublyLinkedList<T> {
                     if(i == index)
                         return cur;
                     cur = cur.prev;
-                    count++;
-                    System.out.println(count);
                 }
             }
         }
@@ -134,7 +129,7 @@ public class DoublyLinkedList<T> {
      *
      * @param index the index of the node in the list
      * @return the data from the node at specified index
-     * @throws IndexOutOfBoundsException if {@code index < 0 || index > size()}
+     * @throws IndexOutOfBoundsException if {@code index < 0 || index >= size()}
      */
     public T getAt(int index) {
         return getNode(index).data;
@@ -180,4 +175,54 @@ public class DoublyLinkedList<T> {
         insert(size(), data);
     }
 
+    /**
+     * Removes data from a specific position in the list
+     *
+     * @param index the index at which data is to be removed from
+     * @return the data that was removed from the list
+     * @throws IndexOutOfBoundsException if {@code index < 0 || index >= size()}
+     */
+    public T remove(int index) {
+        if(index < 0 || index >= size()) throw new IndexOutOfBoundsException();
+        T removed;
+        if(index == 0) {
+            removed = head.data;
+            if(head == tail)
+            {
+                head = tail = null;
+            }
+            else
+            {
+                head = head.next;
+                head.prev = null;
+            }
+        }
+        else{
+            Node<T> cur = getNode(index);
+            Node<T> prev = cur.prev;
+            removed = cur.data;
+            if(cur == tail)
+            {
+                tail = prev;
+                prev.next = null;
+            }
+            else
+            {
+                prev.next = cur.next;
+                cur.next.prev = prev;
+            }
+        }
+        size--;
+        return removed;
+    }
+
+    /**
+     * Removes data from the end of the list
+     *
+     * @return the data that was removed from the list
+     * @throws IndexOutOfBoundsException if {@code index < 0 || index >= size()}
+     */
+    public T remove() {
+        return remove(size()-1);
+    }
 }
